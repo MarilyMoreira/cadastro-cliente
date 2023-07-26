@@ -4,7 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -17,6 +20,8 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Cliente {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idcliente;
 	@NotBlank
 	private String nomeCompleto;
@@ -31,7 +36,6 @@ public class Cliente {
 	
 	private Cliente(@NotBlank String nomeCompleto, @NotBlank String celular, Endereço endereço,
 			@NotNull LocalDate dataDeNascimento) {
-		this.idcliente = UUID.randomUUID();
 		this.nomeCompleto = nomeCompleto;
 		this.celular = celular;
 		this.endereço = endereço;
