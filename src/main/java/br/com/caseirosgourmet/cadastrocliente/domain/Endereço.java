@@ -1,8 +1,10 @@
 package br.com.caseirosgourmet.cadastrocliente.domain;
 
+import jakarta.persistence.Embeddable;
 import lombok.Getter;
 
 @Getter
+@Embeddable
 public class Endereço {
 	
 	private String logradouro;
