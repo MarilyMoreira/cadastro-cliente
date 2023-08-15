@@ -28,6 +28,7 @@ public class Cliente {
 	private String nomeCompleto;
 	@NotBlank
 	private String celular;
+	private Sexo sexo;
 	@Embedded
 	private Endereço endereço;	
 	@NotNull
@@ -37,9 +38,10 @@ public class Cliente {
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 	
 	private Cliente(@NotBlank String nomeCompleto, @NotBlank String celular, Endereço endereço,
-			@NotNull LocalDate dataDeNascimento) {
+			@NotNull LocalDate dataDeNascimento, Sexo sexo) {
 		this.nomeCompleto = nomeCompleto;
 		this.celular = celular;
+		this.sexo = sexo;
 		this.endereço = endereço;
 		this.dataDeNascimento = dataDeNascimento;
 		this.dataHoraDoCadastro = LocalDateTime.now();
