@@ -1,4 +1,4 @@
 server:
   servlet:
-     context-path: /cadsatro-cliente/api
+     context-path: /cadastro-cliente/api
   

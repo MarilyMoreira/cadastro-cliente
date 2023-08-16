@@ -3,12 +3,12 @@ package br.com.caseirosgourmet.cadastrocliente.application.api;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.caseirosgourmet.cadastrocliente.application.service.ClienteService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 @RestController
 @Log4j2
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ClienteController implements ClienteAPI {
 	private final ClienteService clienteService;
 

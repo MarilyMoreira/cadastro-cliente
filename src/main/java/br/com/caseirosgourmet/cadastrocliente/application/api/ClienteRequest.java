@@ -17,7 +17,7 @@ public class ClienteRequest {
 	private String celular;
 	private Sexo sexo;
 	@Embedded
-	private Endereço endereço;	
+	private Endereço endereco;	
 	@NotNull
 	private LocalDate dataDeNascimento;
 }

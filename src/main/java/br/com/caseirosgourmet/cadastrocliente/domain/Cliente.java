@@ -30,19 +30,19 @@ public class Cliente {
 	private String celular;
 	private Sexo sexo;
 	@Embedded
-	private Endereço endereço;	
+	private Endereço endereco;	
 	@NotNull
 	private LocalDate dataDeNascimento;
 	
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 	
-	private Cliente(@NotBlank String nomeCompleto, @NotBlank String celular, Endereço endereço,
+	private Cliente(@NotBlank String nomeCompleto, @NotBlank String celular, Endereço endereco,
 			@NotNull LocalDate dataDeNascimento, Sexo sexo) {
 		this.nomeCompleto = nomeCompleto;
 		this.celular = celular;
 		this.sexo = sexo;
-		this.endereço = endereço;
+		this.endereco = endereco;
 		this.dataDeNascimento = dataDeNascimento;
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
