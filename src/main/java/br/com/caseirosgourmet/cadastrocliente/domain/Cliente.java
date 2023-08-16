@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.caseirosgourmet.cadastrocliente.application.api.ClienteRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -36,14 +37,13 @@ public class Cliente {
 	
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
-	
-	private Cliente(@NotBlank String nomeCompleto, @NotBlank String celular, Endereço endereco,
-			@NotNull LocalDate dataDeNascimento, Sexo sexo) {
-		this.nomeCompleto = nomeCompleto;
-		this.celular = celular;
-		this.sexo = sexo;
-		this.endereco = endereco;
-		this.dataDeNascimento = dataDeNascimento;
+
+	public Cliente(ClienteRequest clienteRequest) {
+		this.nomeCompleto = clienteRequest.getNomeCompleto();
+		this.celular = clienteRequest.getCelular();
+		this.sexo = clienteRequest.getSexo();
+		this.endereco = clienteRequest.getEndereco();
+		this.dataDeNascimento = clienteRequest.getDataDeNascimento();
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
 
