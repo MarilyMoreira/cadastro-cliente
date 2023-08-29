@@ -1,9 +1,11 @@
 package br.com.caseirosgourmet.cadastrocliente.application.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.caseirosgourmet.cadastrocliente.application.api.ClienteDetalhadoResponse;
 import br.com.caseirosgourmet.cadastrocliente.application.api.ClienteListResponse;
 import br.com.caseirosgourmet.cadastrocliente.application.api.ClienteRequest;
 import br.com.caseirosgourmet.cadastrocliente.application.api.ClienteResponse;
@@ -34,5 +36,12 @@ public class ClienteApplicationService implements ClienteService {
 		List<Cliente> clientes = clienteRepository.buscaTodosClientes();
 		log.info("[finaliza] ClienteApplicationService - buscaTodosClientes");
 		return ClienteListResponse.converte(clientes);
+	}
+
+	@Override
+	public ClienteDetalhadoResponse buscaClienteAtravesId(UUID idCliente) {
+		log.info("[inicia] ClienteApplicationService - buscaClienteAtravesId");
+		log.info("[finaliza] ClienteApplicationService - buscaClienteAtravesId");
+		return null;
 	}
 }
