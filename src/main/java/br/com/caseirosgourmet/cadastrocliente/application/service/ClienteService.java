@@ -3,6 +3,7 @@ package br.com.caseirosgourmet.cadastrocliente.application.service;
 import java.util.List;
 import java.util.UUID;
 
+import br.com.caseirosgourmet.cadastrocliente.application.api.ClienteAlteracaoRequest;
 import br.com.caseirosgourmet.cadastrocliente.application.api.ClienteDetalhadoResponse;
 import br.com.caseirosgourmet.cadastrocliente.application.api.ClienteListResponse;
 import br.com.caseirosgourmet.cadastrocliente.application.api.ClienteRequest;
@@ -13,4 +14,5 @@ public interface ClienteService {
 	List<ClienteListResponse> buscaTodosClientes();
 	ClienteDetalhadoResponse buscaClienteAtravesId(UUID idCliente);
 	void deletaClienteAtravesId(UUID idCliente);
+	void patchAlteraCliente(UUID idCliente, ClienteAlteracaoRequest clienteAlteracaoRequest);
 }
