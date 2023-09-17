@@ -9,6 +9,8 @@ import br.com.caseirosgourmet.cadastrocliente.application.api.ClienteRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,6 +32,7 @@ public class Cliente {
 	private String nomeCompleto;
 	@NotBlank
 	private String celular;
+	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	@Embedded
 	private Endereço endereco;	
