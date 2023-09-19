@@ -1,9 +1,8 @@
-package br.com.caseirosgourmet.cadastrocliente.insumos.domain;
+package br.com.caseirosgourmet.cadastrocliente.insumo.domain;
 
 import java.util.UUID;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -18,11 +17,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
-public class Insumos {
+public class Insumo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, unique = true, nullable = false)
-	private UUID idInsumos;
+	private UUID idInsumo;
 	@NotBlank
 	private String nomeInsumo;
 	@NotBlank

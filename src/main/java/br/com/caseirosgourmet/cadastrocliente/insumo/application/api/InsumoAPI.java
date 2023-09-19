@@ -1,4 +1,4 @@
-package br.com.caseirosgourmet.cadastrocliente.insumos.application.api;
+package br.com.caseirosgourmet.cadastrocliente.insumo.application.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/v1/insumos")
-public interface InsumosAPI {
+@RequestMapping("/v1/insumo")
+public interface InsumoAPI {
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	InsumosResponse postInsumos(@Valid @RequestBody InsumosRequest insumosRequest);
+	InsumoResponse postInsumo(@Valid @RequestBody InsumoRequest insumoRequest);
 }
