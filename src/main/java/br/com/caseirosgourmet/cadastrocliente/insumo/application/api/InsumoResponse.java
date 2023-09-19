@@ -1,5 +1,10 @@
 package br.com.caseirosgourmet.cadastrocliente.insumo.application.api;
 
-public class InsumoResponse {
+import java.util.UUID;
 
+import lombok.Value;
+
+@Value
+public class InsumoResponse {
+	private UUID idInsumo;
 }

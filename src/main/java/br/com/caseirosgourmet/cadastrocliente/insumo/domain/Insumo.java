@@ -1,5 +1,6 @@
 package br.com.caseirosgourmet.cadastrocliente.insumo.domain;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -35,4 +36,20 @@ public class Insumo {
 	@NotBlank
 	@Enumerated(EnumType.STRING)
 	private UnidadeDeMedida unidadeDeMedida;
+	
+	private LocalDateTime dataHoraDoCadastro;
+	private LocalDateTime dataHoraDaUltimaAlteracao;
+	
+	public Insumo(UUID idInsumo, @NotBlank String nomeInsumo, @NotBlank Categoria categoria,
+			@NotBlank TipoInsumo tipoInsumo, @NotBlank int quantidadeMinimaEmEstoque,
+			@NotBlank UnidadeDeMedida unidadeDeMedida) {
+		this.idInsumo = UUID.randomUUID();
+		this.nomeInsumo = nomeInsumo;
+		this.categoria = categoria;
+		this.tipoInsumo = tipoInsumo;
+		this.quantidadeMinimaEmEstoque = quantidadeMinimaEmEstoque;
+		this.unidadeDeMedida = unidadeDeMedida;
+		this.dataHoraDoCadastro = LocalDateTime.now();
+	}
+
 }
