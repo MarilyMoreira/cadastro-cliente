@@ -3,6 +3,7 @@ package br.com.caseirosgourmet.cadastrocliente.insumo.domain;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,6 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -25,30 +27,24 @@ public class Insumo {
 	private UUID idInsumo;
 	@NotBlank
 	private String nomeInsumo;
-	@NotBlank
 	@Enumerated(EnumType.STRING)
-	private Categoria categoria;
-	@NotBlank
+	private Categoria categoria;	
 	@Enumerated(EnumType.STRING)
 	private TipoInsumo tipoInsumo;	
-	@NotBlank
-	private int quantidadeMinimaEmEstoque;
-	@NotBlank
+	@Min(value = 1, message ="Valor Mínimo 1")		
+	private Integer quantidadeMinimaEmEstoque;	
 	@Enumerated(EnumType.STRING)
-	private UnidadeDeMedida unidadeDeMedida;
+	private UnidadeDeMedida unidadeDeMedida;	
 	
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 	
-	public Insumo(UUID idInsumo, @NotBlank String nomeInsumo, @NotBlank Categoria categoria,
-			@NotBlank TipoInsumo tipoInsumo, @NotBlank int quantidadeMinimaEmEstoque,
-			@NotBlank UnidadeDeMedida unidadeDeMedida) {
-		this.idInsumo = UUID.randomUUID();
-		this.nomeInsumo = nomeInsumo;
-		this.categoria = categoria;
-		this.tipoInsumo = tipoInsumo;
-		this.quantidadeMinimaEmEstoque = quantidadeMinimaEmEstoque;
-		this.unidadeDeMedida = unidadeDeMedida;
+	public Insumo(InsumoRequest insumoRequest) {
+		this.nomeInsumo = insumoRequest.getNomeInsumo();
+		this.categoria = insumoRequest.getCategoria();
+		this.tipoInsumo = insumoRequest.getTipoInsumo();
+		this.quantidadeMinimaEmEstoque = insumoRequest.getQuantidadeMinimaEmEstoque();
+		this.unidadeDeMedida = insumoRequest.getUnidadeDeMedida();
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
 

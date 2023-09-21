@@ -5,6 +5,7 @@ import br.com.caseirosgourmet.cadastrocliente.insumo.domain.TipoInsumo;
 import br.com.caseirosgourmet.cadastrocliente.insumo.domain.UnidadeDeMedida;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Value;
 
@@ -12,15 +13,12 @@ import lombok.Value;
 public class InsumoRequest {
 	@NotBlank
 	private String nomeInsumo;
-	@NotBlank
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
-	@NotBlank
 	@Enumerated(EnumType.STRING)
-	private TipoInsumo tipoInsumo;	
-	@NotBlank
-	private int quantidadeMinimaEmEstoque;
-	@NotBlank
+	private TipoInsumo tipoInsumo;
+	@Min(value = 1,message ="Valor Mínimo 1")
+	private Integer quantidadeMinimaEmEstoque;
 	@Enumerated(EnumType.STRING)
 	private UnidadeDeMedida unidadeDeMedida;
 }
