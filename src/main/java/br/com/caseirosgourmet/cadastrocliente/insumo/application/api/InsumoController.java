@@ -1,6 +1,7 @@
 package br.com.caseirosgourmet.cadastrocliente.insumo.application.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,5 +30,14 @@ public class InsumoController implements InsumoAPI {
 		List<InsumoListResponse> insumo = insumoService.buscaTodosInsumos();
 		log.info("[finaliza] InsumoController - getTodosInsumos");
 		return insumo;
+	}
+
+	@Override
+	public InsumoDetalhadoResponse getInsumoAtravesId(UUID idInsumo) {
+		log.info("[inicia] InsumoController - getInsumoAtravesId");
+		log.info("[idInsumo] {}", idInsumo);
+		InsumoDetalhadoResponse insumoDetalhado = insumoService.buscaInsumoAtravesId(idInsumo);
+		log.info("[finaliza] InsumoController - getInsumoAtravesId");
+		return insumoDetalhado;
 	}
 }

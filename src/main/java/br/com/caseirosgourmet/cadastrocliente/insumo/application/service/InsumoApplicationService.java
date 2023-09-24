@@ -1,9 +1,11 @@
 package br.com.caseirosgourmet.cadastrocliente.insumo.application.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoDetalhadoResponse;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoListResponse;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoRequest;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoResponse;
@@ -37,4 +39,11 @@ public class InsumoApplicationService implements InsumoService {
 		return InsumoListResponse.converte(insumos);
 	}
 
+	@Override
+	public InsumoDetalhadoResponse buscaInsumoAtravesId(UUID idInsumo) {
+		log.info("[inicia] InsumoApplicationService - buscaInsumoAtravesId");
+		Insumo insumo = insumoRepository.buscaInsumoAtravesId(idInsumo);
+		log.info("[finaliza] InsumoApplicationService - buscaInsumoAtravesId");
+		return new InsumoDetalhadoResponse(insumo);
+	}
 }
