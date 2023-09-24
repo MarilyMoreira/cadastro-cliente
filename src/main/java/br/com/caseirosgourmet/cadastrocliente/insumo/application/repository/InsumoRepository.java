@@ -9,4 +9,5 @@ public interface InsumoRepository {
 	Insumo salva(Insumo insumo);
 	List<Insumo> buscaTodosInsumos();
 	Insumo buscaInsumoAtravesId(UUID idInsumo);
+	void deletaInsumo(Insumo insumo);
 }

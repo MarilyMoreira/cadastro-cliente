@@ -26,9 +26,7 @@ public class InsumoApplicationService implements InsumoService {
 		log.info("[inicia] InsumoApplicationService - criaInsumo");
 		Insumo insumo = insumoRepository.salva(new Insumo(insumoRequest));
 		log.info("[finaliza] InsumoApplicationService - criaInsumo");
-		return InsumoResponse.builder()
-				.idInsumo(insumo.getIdInsumo())
-				.build();
+		return InsumoResponse.builder().idInsumo(insumo.getIdInsumo()).build();
 	}
 
 	@Override
@@ -45,5 +43,14 @@ public class InsumoApplicationService implements InsumoService {
 		Insumo insumo = insumoRepository.buscaInsumoAtravesId(idInsumo);
 		log.info("[finaliza] InsumoApplicationService - buscaInsumoAtravesId");
 		return new InsumoDetalhadoResponse(insumo);
+	}
+
+	@Override
+	public void deletaInsumoAtravesId(UUID idInsumo) {
+		log.info("[inicia] InsumoApplicationService - deletaInsumoAtravesId");
+		Insumo insumo = insumoRepository.buscaInsumoAtravesId(idInsumo);
+		insumoRepository.deletaInsumo(insumo);
+		log.info("[finaliza] InsumoApplicationService - deletaInsumoAtravesId");
+
 	}
 }

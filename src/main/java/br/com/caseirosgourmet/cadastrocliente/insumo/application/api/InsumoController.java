@@ -40,4 +40,12 @@ public class InsumoController implements InsumoAPI {
 		log.info("[finaliza] InsumoController - getInsumoAtravesId");
 		return insumoDetalhado;
 	}
+
+	@Override
+	public void deletaInsumoAtravesId(UUID idInsumo) {
+		log.info("[inicia] InsumoController - deletaInsumo");	
+		log.info("[idInsumo] {}", idInsumo);
+		insumoService.deletaInsumoAtravesId(idInsumo);
+		log.info("[finaliza] InsumoController - deletaInsumo");		
+	}
 }

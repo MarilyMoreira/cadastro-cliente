@@ -13,4 +13,5 @@ public interface InsumoService {
 	InsumoResponse criaInsumo(@Valid InsumoRequest insumoRequest);
 	List<InsumoListResponse> buscaTodosInsumos();
 	InsumoDetalhadoResponse buscaInsumoAtravesId(UUID idInsumo);
+	void deletaInsumoAtravesId(UUID idInsumo);
 }

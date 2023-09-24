@@ -43,4 +43,12 @@ public class InsumoInfraRepository implements InsumoRepository {
 		return insumo;
 	}
 
+	@Override
+	public void deletaInsumo(Insumo insumo) {
+		log.info("[inicia] InsumoInfraRepository - deletaInsumo");
+		insumoSpringDataJPARepository.delete(insumo);
+		log.info("[inicia] InsumoInfraRepository - deletaInsumo");
+		
+	}
+
 }
