@@ -1,5 +1,7 @@
 package br.com.caseirosgourmet.cadastrocliente.insumo.infra;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.repository.InsumoRepository;
@@ -19,6 +21,14 @@ public class InsumoInfraRepository implements InsumoRepository {
 		insumoSpringDataJPARepository.save(insumo);
 		log.info("[finaliza] InsumoInfraRepository - salva");
 		return insumo;
+	}
+
+	@Override
+	public List<Insumo> buscaTodosInsumos() {
+		log.info("[inicia] InsumoInfraRepository - buscaTodosInsumos");
+		List<Insumo> todosInsumos = insumoSpringDataJPARepository.findAll();
+		log.info("[finaliza] InsumoInfraRepository - buscaTodosInsumos");
+		return todosInsumos;
 	}
 
 }

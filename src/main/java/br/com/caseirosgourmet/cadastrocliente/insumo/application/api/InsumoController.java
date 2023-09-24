@@ -1,5 +1,7 @@
 package br.com.caseirosgourmet.cadastrocliente.insumo.application.api;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.service.InsumoService;
@@ -19,5 +21,13 @@ public class InsumoController implements InsumoAPI {
 		InsumoResponse insumoCriado = insumoService.criaInsumo(insumoRequest);
 		log.info("[finaliza] InsumoController - postInsumo");
 		return insumoCriado;
+	}
+
+	@Override
+	public List<InsumoListResponse> getTodosInsumos() {
+		log.info("[inicia] InsumoController - getTodosInsumos");
+		List<InsumoListResponse> insumo = insumoService.buscaTodosInsumos();
+		log.info("[finaliza] InsumoController - getTodosInsumos");
+		return insumo;
 	}
 }
