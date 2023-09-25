@@ -3,6 +3,7 @@ package br.com.caseirosgourmet.cadastrocliente.insumo.domain;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoAlteracaoRequest;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,17 +29,17 @@ public class Insumo {
 	@NotBlank
 	private String nomeInsumo;
 	@Enumerated(EnumType.STRING)
-	private Categoria categoria;	
+	private Categoria categoria;
 	@Enumerated(EnumType.STRING)
-	private TipoInsumo tipoInsumo;	
-	@Min(value = 1, message ="Valor Mínimo 1")		
-	private Integer quantidadeMinimaEmEstoque;	
+	private TipoInsumo tipoInsumo;
+	@Min(value = 1, message = "Valor Mínimo 1")
+	private Integer quantidadeMinimaEmEstoque;
 	@Enumerated(EnumType.STRING)
-	private UnidadeDeMedida unidadeDeMedida;	
-	
+	private UnidadeDeMedida unidadeDeMedida;
+
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
-	
+
 	public Insumo(InsumoRequest insumoRequest) {
 		this.nomeInsumo = insumoRequest.getNomeInsumo();
 		this.categoria = insumoRequest.getCategoria();
@@ -48,4 +49,13 @@ public class Insumo {
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
 
+	public void altera(InsumoAlteracaoRequest insumoRequest) {
+		this.nomeInsumo = insumoRequest.getNomeInsumo();
+		this.categoria = insumoRequest.getCategoria();
+		this.tipoInsumo = insumoRequest.getTipoInsumo();
+		this.quantidadeMinimaEmEstoque = insumoRequest.getQuantidadeMinimaEmEstoque();
+		this.unidadeDeMedida = insumoRequest.getUnidadeDeMedida();
+		this.dataHoraDoCadastro = LocalDateTime.now();
+		
+	}
 }

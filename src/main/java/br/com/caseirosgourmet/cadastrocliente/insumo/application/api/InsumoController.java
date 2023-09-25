@@ -48,4 +48,12 @@ public class InsumoController implements InsumoAPI {
 		insumoService.deletaInsumoAtravesId(idInsumo);
 		log.info("[finaliza] InsumoController - deletaInsumo");		
 	}
+
+	@Override
+	public void patchAlteraInsumo(UUID idInsumo, @Valid InsumoAlteracaoRequest insumoAlteracaoRequest) {
+		log.info("[inicia] InsumoController - patchAlteraInsumo");	
+		log.info("[idInsumo] {}", idInsumo);
+		insumoService.patchAlteraInsumo(idInsumo, insumoAlteracaoRequest);
+		log.info("[finaliza] InsumoController - patchAlteraInsumo");			
+	}
 }

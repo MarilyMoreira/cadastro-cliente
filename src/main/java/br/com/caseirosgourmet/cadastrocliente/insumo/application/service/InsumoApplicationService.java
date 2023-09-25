@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoAlteracaoRequest;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoDetalhadoResponse;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoListResponse;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoRequest;
@@ -52,5 +53,16 @@ public class InsumoApplicationService implements InsumoService {
 		insumoRepository.deletaInsumo(insumo);
 		log.info("[finaliza] InsumoApplicationService - deletaInsumoAtravesId");
 
+	}
+
+	@Override
+	public void patchAlteraInsumo(UUID idInsumo, @Valid InsumoAlteracaoRequest insumoAlteracaoRequest) {
+		log.info("[inicia] InsumoApplicationService - patchAlteraInsumo");
+		Insumo insumo = insumoRepository.buscaInsumoAtravesId(idInsumo);
+		insumo.altera(insumoAlteracaoRequest);
+		insumoRepository.salva(insumo);
+		log.info("[finaliza] InsumoApplicationService - patchAlteraInsumo");
+		
+		
 	}
 }
