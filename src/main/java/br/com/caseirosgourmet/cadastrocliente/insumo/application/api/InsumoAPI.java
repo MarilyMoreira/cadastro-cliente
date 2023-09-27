@@ -43,5 +43,6 @@ public interface InsumoAPI {
 	
 	@PatchMapping(value = "/{idInsumo}/gerencia-insumo")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void gerenciaInsumo(@Valid @RequestBody GerenciadorInsumo gerenciadorInsumo);
+	void gerenciaInsumo(@PathVariable UUID idInsumo,
+			@Valid @RequestBody GerenciadorInsumo gerenciadorInsumo);
 }

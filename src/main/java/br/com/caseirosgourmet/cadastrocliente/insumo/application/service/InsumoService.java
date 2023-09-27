@@ -8,6 +8,7 @@ import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoDetal
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoListResponse;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoRequest;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoResponse;
+import br.com.caseirosgourmet.cadastrocliente.insumo.domain.GerenciadorInsumo;
 import jakarta.validation.Valid;
 
 public interface InsumoService {
@@ -16,4 +17,5 @@ public interface InsumoService {
 	InsumoDetalhadoResponse buscaInsumoAtravesId(UUID idInsumo);
 	void deletaInsumoAtravesId(UUID idInsumo);
 	void patchAlteraInsumo(UUID idInsumo, @Valid InsumoAlteracaoRequest insumoAlteracaoRequest);
+	void patchGerenciaInsumo(UUID idInsumo, @Valid GerenciadorInsumo gerenciadorInsumo);
 }

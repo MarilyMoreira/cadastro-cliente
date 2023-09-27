@@ -11,6 +11,7 @@ import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoListR
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoRequest;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoResponse;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.repository.InsumoRepository;
+import br.com.caseirosgourmet.cadastrocliente.insumo.domain.GerenciadorInsumo;
 import br.com.caseirosgourmet.cadastrocliente.insumo.domain.Insumo;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -63,6 +64,12 @@ public class InsumoApplicationService implements InsumoService {
 		insumoRepository.salva(insumo);
 		log.info("[finaliza] InsumoApplicationService - patchAlteraInsumo");
 		
+		
+	}
+
+	@Override
+	public void patchGerenciaInsumo(UUID idInsumo, @Valid GerenciadorInsumo gerenciadorInsumo) {
+		// TODO Auto-generated method stub
 		
 	}
 }

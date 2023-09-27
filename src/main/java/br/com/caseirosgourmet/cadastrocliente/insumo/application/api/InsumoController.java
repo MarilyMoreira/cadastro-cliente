@@ -59,9 +59,10 @@ public class InsumoController implements InsumoAPI {
 	}
 
 	@Override
-	public void gerenciaInsumo(@Valid GerenciadorInsumo gerenciadorInsumo) {
+	public void gerenciaInsumo(UUID idInsumo, @Valid GerenciadorInsumo gerenciadorInsumo) {
 		log.info("[inicia] InsumoController - gerenciaInsumo");	
-		log.info("[finaliza] InsumoController - gerenciaInsumo");	
-		
+		log.info("[idInsumo] {}", idInsumo);
+		insumoService.patchGerenciaInsumo(idInsumo, gerenciadorInsumo);
+		log.info("[finaliza] InsumoController - gerenciaInsumo");
 	}
 }
