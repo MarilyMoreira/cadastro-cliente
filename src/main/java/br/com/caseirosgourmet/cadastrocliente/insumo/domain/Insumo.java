@@ -56,6 +56,5 @@ public class Insumo {
 		this.quantidadeMinimaEmEstoque = insumoRequest.getQuantidadeMinimaEmEstoque();
 		this.unidadeDeMedida = insumoRequest.getUnidadeDeMedida();
 		this.dataHoraDoCadastro = LocalDateTime.now();
-		
 	}
 }

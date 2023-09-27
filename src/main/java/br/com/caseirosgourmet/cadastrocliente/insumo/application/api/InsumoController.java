@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.service.InsumoService;
+import br.com.caseirosgourmet.cadastrocliente.insumo.domain.GerenciadorInsumo;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -55,5 +56,12 @@ public class InsumoController implements InsumoAPI {
 		log.info("[idInsumo] {}", idInsumo);
 		insumoService.patchAlteraInsumo(idInsumo, insumoAlteracaoRequest);
 		log.info("[finaliza] InsumoController - patchAlteraInsumo");			
+	}
+
+	@Override
+	public void gerenciaInsumo(@Valid GerenciadorInsumo gerenciadorInsumo) {
+		log.info("[inicia] InsumoController - gerenciaInsumo");	
+		log.info("[finaliza] InsumoController - gerenciaInsumo");	
+		
 	}
 }

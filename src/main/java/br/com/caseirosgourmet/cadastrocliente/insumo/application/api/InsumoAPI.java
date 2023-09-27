@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.caseirosgourmet.cadastrocliente.insumo.domain.GerenciadorInsumo;
 import jakarta.validation.Valid;
 
 @RestController
@@ -39,4 +40,8 @@ public interface InsumoAPI {
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	void patchAlteraInsumo(@PathVariable UUID idInsumo,
 			@Valid @RequestBody InsumoAlteracaoRequest insumoAlteracaoRequest);
+	
+	@PatchMapping(value = "/{idInsumo}/gerencia-insumo")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	void gerenciaInsumo(@Valid @RequestBody GerenciadorInsumo gerenciadorInsumo);
 }
