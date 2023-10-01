@@ -3,15 +3,18 @@ package br.com.caseirosgourmet.cadastrocliente.insumo.domain;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.GerenciadorRequest;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoAlteracaoRequest;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoRequest;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
@@ -36,6 +39,8 @@ public class Insumo {
 	private Integer quantidadeMinimaEmEstoque;
 	@Enumerated(EnumType.STRING)
 	private UnidadeDeMedida unidadeDeMedida;
+	@Embedded
+	private GerenciadorInsumo gerenciadorInsumo;
 
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
@@ -57,4 +62,10 @@ public class Insumo {
 		this.unidadeDeMedida = insumoRequest.getUnidadeDeMedida();
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
+
+	public void gerenciaInsumo(@Valid GerenciadorRequest gerenciadorRequest) {
+		this.gerenciadorInsumo = new GerenciadorInsumo(gerenciadorRequest);
+		
+	}
+
 }

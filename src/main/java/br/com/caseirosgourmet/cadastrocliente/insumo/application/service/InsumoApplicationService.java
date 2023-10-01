@@ -5,13 +5,13 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.GerenciadorRequest;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoAlteracaoRequest;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoDetalhadoResponse;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoListResponse;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoRequest;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.api.InsumoResponse;
 import br.com.caseirosgourmet.cadastrocliente.insumo.application.repository.InsumoRepository;
-import br.com.caseirosgourmet.cadastrocliente.insumo.domain.GerenciadorInsumo;
 import br.com.caseirosgourmet.cadastrocliente.insumo.domain.Insumo;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -63,13 +63,16 @@ public class InsumoApplicationService implements InsumoService {
 		insumo.altera(insumoAlteracaoRequest);
 		insumoRepository.salva(insumo);
 		log.info("[finaliza] InsumoApplicationService - patchAlteraInsumo");
-		
-		
+
 	}
 
 	@Override
-	public void patchGerenciaInsumo(UUID idInsumo, @Valid GerenciadorInsumo gerenciadorInsumo) {
-		// TODO Auto-generated method stub
-		
+	public void patchGerenciaInsumo(UUID idInsumo, @Valid GerenciadorRequest gerenciadorRequest) {
+		log.info("[inicia] InsumoApplicationService - patchGerenciaInsumo");
+		Insumo insumo = insumoRepository.buscaInsumoAtravesId(idInsumo);
+		insumo.gerenciaInsumo(gerenciadorRequest);
+		insumoRepository.salva(insumo);
+		log.info("[finaliza] InsumoApplicationService - patchGerenciaInsumo");
+
 	}
 }
